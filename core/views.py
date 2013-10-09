@@ -3,7 +3,6 @@ from schools.models import School
 from django.views.generic import ListView
 from django.db.models import Q
 
-
 class IndexListView(ListView):
     context_object_name = "schools"
     template_name = "index.html"

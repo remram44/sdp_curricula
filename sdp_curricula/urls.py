@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.http import HttpResponse
 
 from curricula.views import LearningMaterialDetailView, GradeCurriculumDetailView, CurriculumListView, AnalysisIndexListView, GradeCurriculumUse
 from schools.views import SchoolDetailView, SchoolCurriculaMatch, AnalysisSchoolsListView, AnalysisSchoolInventory
@@ -6,6 +7,12 @@ from core.views import IndexListView, SchoolsListView
 
 from django.contrib import admin
 admin.autodiscover()
+
+
+import logging
+log = logging.getLogger(__name__)
+log.debug('foo')
+
 
 urlpatterns = patterns('',
     # Examples:
