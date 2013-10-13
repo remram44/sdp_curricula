@@ -6,7 +6,7 @@ hr {
   padding-bottom: 1em;
 }
 
-.scores-container div {
+.scores-container {
   font-style: normal !important;
   font-size: 12px !important;
   font-family: helvetica, arial, sans-serif !important; 
@@ -293,6 +293,7 @@ a:active {
   height: 95px;
   width: 220px;
   float: right;
+  margin-bottom:20px;
 }
 
 #reading-scores {
