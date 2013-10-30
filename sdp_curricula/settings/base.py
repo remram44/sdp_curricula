@@ -8,7 +8,7 @@ PROJECT_ROOT = '/home/merbroussard/axis2/stacked-up'
 sys.path.append(os.path.join(PROJECT_ROOT, "lib"))
 
 DEBUG = True
-#TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = DEBUG
 
 SECRET_KEY = "70ca2857c8bd8c80401ff4e65d2ebf48"
 
@@ -107,8 +107,9 @@ STATICFILES_FINDERS = (
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+        'django.template.loaders.app_directories.Loader',
 )
+#     'django.template.loaders.eggs.Loader',
 
 MIDDLEWARE_CLASSES = (
     # 'django.middleware.cache.UpdateCacheMiddleware',
@@ -120,8 +121,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'aloha_editor.middleware.AlohaEditorMiddleware',
 )
 
 ROOT_URLCONF = 'sdp_curricula.urls'
@@ -144,8 +145,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
+    'aloha_editor',
     'south',
+    'debug_toolbar',
 #    'devserver',
     'compressor',
     'debug_toolbar',
@@ -154,7 +156,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 #    Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-
+    'articles',
     'schools',
     'students',
     'curricula',
