@@ -4,13 +4,11 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}Stacked Up: Do Philly students have the books they need?{% endblock %}</title>
-    {% compress css %}
       <link rel="stylesheet" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.10.2.custom.min.css" />
       <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/tooltipster.css" />        
       <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
       <link rel="stylesheet" href="{{ STATIC_URL }}css/site.css">
       {% block extra_css %}{% endblock %}
-    {% endcompress %}
     <link rel="icon" href="https://s3.amazonaws.com/axisphilly-assets/images/favicon.png" type="image/x-icon" />
     <link rel="shortcut icon" href="https://s3.amazonaws.com/axisphilly-assets/images/favicon.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
@@ -35,7 +33,7 @@
     {% block subheader %} 
       <div id="sub-header" class="top-bar">
         <div class="container content-inner cf">
-          <a href="/" class="left">
+          <a href="/?p=1" class="left">
             <h1 id="project-header" class="h2">Stacked Up</h1>
             <h2 id="project-sub-header" class="h3">Do Philly students have the books they need?</h2>
           </a>
@@ -49,7 +47,6 @@
       <a href="https://github.com/merbroussard/">View the source on Github</a>.
     </div>
 
-    {% compress js %}
       <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
       <script src="{{ STATIC_URL }}js/jquery.tablesorter.min.js"></script>
       <script src="{{ STATIC_URL }}js/jquery.tooltipster.min.js"></script>
@@ -57,7 +54,6 @@
       <script src="{{ STATIC_URL }}js/canvasjs.min.js"></script>
       <script src="{{ STATIC_URL }}js/site.js"></script>
       {% block scripts %}{% endblock %}
-    {% endcompress %}
     <script src="{{ STATIC_URL }}js/jquery-ui-1.10.2.custom.min.js"></script>
     
     <script type="text/javascript">var addthis_config = {"data_track_addressbar":true, "ui_click": true};</script>

@@ -69,12 +69,15 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/home/merbroussard/webapps/static/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = 'http://merbroussard.webfactional.com/static/media/'
+
+# CKEDITOR 
+CKEDITOR_UPLOAD_PATH = '/home/merbroussard/webapps/static/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -84,14 +87,14 @@ MEDIA_URL = ''
 STATIC_ROOT = '/home/merbroussard/webapps/static/'
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = 'http://merbroussard.webfactional.com/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, 'staticfiles'),
+    os.path.join(PROJECT_ROOT, 'staticfiles', '/home/merbroussard/webapps/static/ckeditor/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -137,7 +140,13 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth'
+)
+
 INSTALLED_APPS = (
+    'adminsortable',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -145,7 +154,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'aloha_editor',
+    'ckeditor',
     'south',
     'debug_toolbar',
 #    'devserver',
