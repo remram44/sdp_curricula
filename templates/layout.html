@@ -9,8 +9,8 @@
       <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css">
       <link rel="stylesheet" href="{{ STATIC_URL }}css/site.css">
       {% block extra_css %}{% endblock %}
-    <link rel="icon" href="https://s3.amazonaws.com/axisphilly-assets/images/favicon.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="https://s3.amazonaws.com/axisphilly-assets/images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="{{ STATIC_URL }}images/stacked-up-logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}images/stacked-up-logo.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
     <meta property="og:title" content="{% block ogtitle %}Stacked Up: Do Philly students have the books they need?{% endblock %}" />
     <meta property="og:type" content="news_application" />
@@ -26,20 +26,16 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>        
   </head>
   <body>    
-    <div id="header" class="top-bar">
-      <ul class="container content-inner cf">
-      </ul>
-    </div>  
     {% block subheader %} 
       <div id="sub-header" class="top-bar">
         <div class="container content-inner cf">
-          <a href="/?p=1" class="left">
+          <a href="/" class="left">
             <h1 id="project-header" class="h2">Stacked Up</h1>
             <h2 id="project-sub-header" class="h3">Do Philly students have the books they need?</h2>
           </a>
           {% block index_social %}{% endblock %}
         </div>
-      </div>     
+      </div>
     {% endblock %} 
     {% block content %} 
     {% endblock %} 
