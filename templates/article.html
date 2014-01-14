@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content%}
+<div class="article-detail">
+<h1>{{ article.title }}</h1>
+{{ article.body|safe}}
+</div>
+{% endblock %}

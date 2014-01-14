@@ -1,11 +1,13 @@
 from django.conf.urls import patterns, include, url
+from django.http import HttpResponse
 
 from curricula.views import LearningMaterialDetailView, GradeCurriculumDetailView, CurriculumListView, AnalysisIndexListView, GradeCurriculumUse
 from schools.views import SchoolDetailView, SchoolCurriculaMatch, AnalysisSchoolsListView, AnalysisSchoolInventory
 from core.views import IndexListView, SchoolsListView
-
+from articles.views import TestView
 from django.contrib import admin
 admin.autodiscover()
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -19,13 +21,18 @@ urlpatterns = patterns('',
     url(r'^$',
         IndexListView.as_view()),
     url(r'^schools/$',
-        SchoolsListView.as_view()),
-    url(r'^admin/', include(admin.site.urls)),
+        SchoolsListView.as_view(),
+        name='schools_list'),
+    url(r'^siteadmin/', include(admin.site.urls)),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^api/', include('api.urls')),
     url(r'^school/', include('schools.urls'), name='school_listing'),
     url(r'^gradecurriculum/(?P<id>(.+))/$',
         GradeCurriculumUse.as_view()),
 
+    # Articles
+    url(r'^article/(?P<id>(.+))/$', "articles.views.TestView"),
+    
     # Analysis views
     url(r'^analysis/$',
         AnalysisIndexListView.as_view()),

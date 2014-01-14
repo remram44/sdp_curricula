@@ -1,0 +1,21 @@
+{% for item in items %}
+    <h4><a href="{{ item.url }}">{{ item.title }}</a></h4>
+    <hr/>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if items.paginator.num_pages > 1 %}
+            {% if items.has_previous %}
+                <a href="?p={{ items.previous_page_number }}"><</a>
+            {% endif %}
+    
+            <span class="current">
+                {{ items.number }} of {{ items.paginator.num_pages }}
+            </span>
+    
+            {% if items.has_next %}
+                <a href="?p={{ items.next_page_number }}">></a>
+            {% endif %}
+        {% endif %}
+    </span>
+</div>

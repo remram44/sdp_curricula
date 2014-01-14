@@ -2,8 +2,11 @@
 {% load humanize %}
 {% block content %}
     <div class="schools-list container content-inner">
-        <p>From here, you can navigate to any school listed and explore the inventory as it relates to curriculum that might be in use at the school.</p>
-        <p>You can sort the list by school name, school type, and the difference between materials at that school and the number of students. For the difference, we display the total difference between the common materials we found in the inventory (that we define as materials likely needed for each student in a classroom), using the assumed curriculum in use for each grade, as compared to the number of students in each grade.
+        <p>Click on a school's name below to peek into its book records. The results may surprise you.
+        </p>
+        <p>
+            This tool relies on <a href="http://webgui.phila.k12.pa.us/offices/a/accountability/open-data-initiative">public data.</a> School names and types came from <a href="http://opendataphilly.org/opendata/resource/114/public-school-statistics/">Open Data Philly.</a> The <a href="http://webgui.phila.k12.pa.us/offices/c/curriculum/">Office of Curriculum and Instruction</a> provided its records for which books were available at which schools as well as the number of students in each grade. <a href="http://webgui.phila.k12.pa.us/offices/e/empowerment-school-support/textbook">Textbook prices</a> and <a href="http://webgui.phila.k12.pa.us/offices/c/curriculum">curriculum standards</a> came from the <a href="http://www.phila.k12.pa.us/">School District of Philadelphia's website.</a>
+
         <table class="tablesorter">
             <thead>
                 <tr>
@@ -13,10 +16,10 @@
                     <th>
                         School Type
                     </th>
-                    <th class="tooltip" title="The total difference between the common materials and the assumed curriculum in use for each grade.">
-                        Difference
+                    <!-- <th class="tooltip" title="The absolute difference between the number of students in each grade and the minimum number of materials that would be required to teach the District-mandated curriculum in that grade.">
+                        Shortfall
                         <span class="tooltip-icon"></span>
-                    </th>
+                    </th>-->                
                 </tr> 
             </thead>
             <tbody>
@@ -24,7 +27,7 @@
                     <tr>
                         <td><a href="/school/{{ school.school.school_code }}">{{ school.school.name.title }}</a></td>
                         <td>{{ school.school.school_level.title }}</td>
-                        <td>{{ school.books_for_students }}</td>
+                        <!-- <td>{{ school.books_for_students }}</td> -->
                     </tr>
                 {% endfor %}
             </tbody>

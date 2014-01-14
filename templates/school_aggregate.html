@@ -7,7 +7,7 @@
         <div class="container content-inner">
             <div class="section row mbn mtm">
                 <h1 id="headline" class="left">{{ school.name.title }}</h1>
-                                <!-- AddThis Button BEGIN -->
+                <!-- AddThis Button BEGIN -->
                 <div class="addthis_toolbox addthis_default_style right mts">
                 <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
                 <a class="addthis_button_tweet"></a>
@@ -20,13 +20,14 @@
                 <div class="col twelve mobile-full" id="graph-sidebar">        
                     <div class="col six mobile-full">        
                         <div class="h3">What's here?</div>
-                        <p>Below are inventory records about reading and math programs at {{ school.name.title }}. Depending upon the quality of school’s own records, it may or may not show what the school actually has. For each subject, we display any curricula that the school appears to have materials for.</p>
-                        <p>For each curriculum, we display the materials that students in this classroom are likely to need, based upon what that curriculum includes. If you see "no records" as the quantity, that means this material is typically used in this curriculum, but the school doesn’t appear to have it.</p>
+                        <p>Below are textbook inventory records from {{ school.name.title }}. We listed the curriculum this school is most likely using in reading and math. You’ll see the minimum instructional materials (usually a textbook and a workbook) we think would be required to learn this curriculum material effectively.</p>
+                        <p>"No records" means the school doesn’t appear to have the text at all. Cost estimates are based on the District’s negotiated prices. Enrollment data is from 2012-2013. These records represent the best available data; schools may have more or less than you see here.</p>
+ 
                     </div>
                     <div class="col six mobile-full">
                         <div class="h3">How to use this tool</div>
-                        <img src="{{ STATIC_URL }}images/needed.png" style="float: right; margin-left: 10px"><p>For each curriculum, you'll see the materials students need. If you care about this school, you can calculate the cost of missing materials by changing the number in the “materials needed” column.</p>
-                        <p>The dollar figure you see at the end of each curriculum is an estimate of that cost, based on the District’s negotiated prices.</p>
+                        <p>It’s tricky to ask if a school has enough books. First, you have to ask how many books are in the school, and then you have to ask if they are the right ones. By "right" we mean the books and materials that are aligned to the curriculum the school is using, the new Common Core educational standards, and the state-mandated Keystone and PSSA exams.</p>
+                        <p>More simply: Do the students have enough books to do their homework as well as their classwork, and do those books cover what's going to be on the standardized tests? If you want to know what it would cost to buy more books, you can calculate below by changing the number in the “materials needed” column.</p>
                     </div>
                 </div>
             </div>
@@ -108,8 +109,8 @@
                                                 <td class="material-difference" data-original-difference="{{ material.numerical_difference }}" data-material-pk="{{material.pk}}" data-title="Difference">
                                                     {{ material.difference }}
                                                     </td>       
-                                                <td class="{% if material.enough == True %}enough{% else %}notEnough{% endif %}" data-title="Enough">
-                                                    <span class="icon">{% if material.enough == True %}1{% else %}-1{% endif %}</span>
+                                                <td class="{% if material.enough %}enough{% else %}notEnough{% endif %}" data-title="Enough">
+                                                    <span class="icon">{% if material.enough == "True" %}1{% else %}-1{% endif %}</span>
                                                 </td>
                                             </tr>
                                         {% endfor %}
@@ -119,7 +120,7 @@
                                         <p>It would cost 
                                             <span class="shortfall-cost" data-original-cost="{{grade_curriculum.cost_shortfall}}"><strong>${{ grade_curriculum.cost_shortfall|floatformat:2|intcomma }}</strong></span>
                                             to purchase the 
-                                            <span class="shortfall-count" data-original-count="{{ grade_curriculum.book_shortfall }}"><strong>{{ grade_curriculum.book_shortfall }}</strong></span> missing materials listed below for the students in grade {{ current_grade }} at {{ school.name.title }}. This does not take into account possible redistribution from other schools or the school district. You can <strong>change the number of needed materials</strong> by using the arrows above.</p>
+                                            <span class="shortfall-count" data-original-count="{{ grade_curriculum.book_shortfall }}"><strong>{{ grade_curriculum.book_shortfall }}</strong></span> missing materials listed above for the students in grade {{ current_grade }} at {{ school.name.title }}.</p>
                                         <hr>
                                     </div>                                    
                                 {% endfor %}
@@ -134,4 +135,13 @@
                 </div>
             </div>
         </div>
+    {% endblock %}
+    {% block scripts %}
+        <script type="text/javascript">
+            var grade = "{{ current_grade }}";
+            if(grade === "K") { grade = 0 };
+    
+            app.getChartData({{ school.pk }}, grade);
+            var school_type = "{{ school.school_type.name }}";
+        </script>
     {% endblock %}
