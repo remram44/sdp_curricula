@@ -3,7 +3,7 @@ import os
 import sys
 
 #PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-PROJECT_ROOT = '/home/merbroussard/axis2/stacked-up'
+PROJECT_ROOT = '/home/vagrant/sdp_curricula'
 # Modify sys.path to include the lib directory
 sys.path.append(os.path.join(PROJECT_ROOT, "lib"))
 
@@ -33,8 +33,8 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'stacked',
-        'USER': 'stacked',
+        'NAME': 'sdp_curricula',
+        'USER': 'postgres',
         'PASSWORD': '@x1s2013',
         'HOST': '',  # Set to empty string for localhost.
         'PORT': '',  # Set to empty string for default.
@@ -83,8 +83,8 @@ CKEDITOR_UPLOAD_PATH = '/home/merbroussard/webapps/static/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-STATIC_ROOT = '/home/merbroussard/webapps/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+#STATIC_ROOT = '/home/merbroussard/webapps/static/'
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = 'http://merbroussard.webfactional.com/static/'
@@ -94,7 +94,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, 'staticfiles', '/home/merbroussard/webapps/static/ckeditor/'),
+    #os.path.join(PROJECT_ROOT, 'staticfiles', '/home/merbroussard/webapps/static/ckeditor/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -204,7 +204,7 @@ LOGGING = {
        'logfile': {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': "/home/merbroussard/django.log",
+            'filename': "/home/vagrant/sdp_curricula/django.log",
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'standard',
