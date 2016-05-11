@@ -22,8 +22,6 @@ Getting started:
         
         # then, within the SSH session:
 
-        pip install -r requirements.txt # install the requirements, you should only have to do this the first time
-          
         pg_restore -U postgres -d sdp_curricula sdp_curricula.dump # load all the datas
 
         ./manage.py runserver 0.0.0.0:8000 # or sdprun for a shortcut
