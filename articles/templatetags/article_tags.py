@@ -2,7 +2,8 @@ from django import template
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template import Template, Context
 import articles, sys
-sys.path.append('/home/merbroussard/axis2/stacked-up/articles/')
+#sys.path.append('/home/merbroussard/axis2/stacked-up/articles/')
+sys.path.append('/home/vagrant/sdp_curricula/articles')
 from articles.models import Article
 
 register = template.Library()
