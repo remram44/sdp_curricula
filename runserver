@@ -1,3 +1,7 @@
 /etc/init.d/postgresql start
+
+trap ' ' INT
 ./manage.py runserver 0.0.0.0:8000
+trap - INT
+
 /etc/init.d/postgresql stop
