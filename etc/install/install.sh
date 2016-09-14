@@ -16,7 +16,7 @@ PGSQL_VERSION=9.1
 
 # Need to fix locale so that Postgres creates databases in UTF-8
 cp -p $PROJECT_DIR/etc/install/etc-bash.bashrc /etc/bash.bashrc
-locale-gen en_GB.UTF-8
+locale-gen --purge en_GB.UTF-8
 dpkg-reconfigure locales
 
 export LANGUAGE=en_GB.UTF-8
