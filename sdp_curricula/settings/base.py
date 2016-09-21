@@ -2,8 +2,7 @@
 import os
 import sys
 
-#PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-PROJECT_ROOT = '/home/vagrant/sdp_curricula'
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 # Modify sys.path to include the lib directory
 sys.path.append(os.path.join(PROJECT_ROOT, "lib"))
 
@@ -204,7 +203,7 @@ LOGGING = {
        'logfile': {
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': "/home/vagrant/sdp_curricula/django.log",
+            'filename': PROJECT_ROOT + "django.log",
             'maxBytes': 50000,
             'backupCount': 2,
             'formatter': 'standard',
